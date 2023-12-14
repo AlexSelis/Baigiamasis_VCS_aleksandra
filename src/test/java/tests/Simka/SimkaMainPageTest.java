@@ -13,14 +13,21 @@ public class SimkaMainPageTest extends TestBase {
         SimkaMainPage.openUrl("https://simka.lt/");
     }
 
-    @DataProvider(name = "logInData")
-    public Object[][] provideDataForLogIn() {
+    @DataProvider(name = "logInValidData")
+    public Object[][] provideDataForValidLogin() {
         return new Object[][]{
                 {"test.benuTest@gmail.com", "Test1Test"}
         };
     }
+    @DataProvider(name = "logInInvalidData")
+    public Object[][] provideDataForInvalidLogin() {
+        return new Object[][]{
+                {"test.benst@gmail.com", "Test1Test"},
+                {"test.benuTest@gmail.com", "Tesest"}
+        };
+    }
 
-    @Test(dataProvider = "logInData")
+    @Test(dataProvider = "logInValidData")
     public void testLoginUsingValidData(String userEmail, String userPassword) {
         String expectedResult = "Mano paskyra";
         String actualResult;
@@ -34,4 +41,21 @@ public class SimkaMainPageTest extends TestBase {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+    @Test(dataProvider = "logInInvalidData")
+    public void testLogInUsingInvalidData(String userEmail, String userPassword){
+
+        String expectedResult = "Įspėjimas: El. paštas ir/arba slaptažodis nerasti sistemoje.";
+        String actualResult;
+
+        SimkaMainPage.clickOnLoginButton();
+        SimkaMainPage.inputUserEmail(userEmail);
+        SimkaMainPage.inputUserPassword(userPassword);
+        SimkaMainPage.clickOnConfirmationButton();
+
+        actualResult = SimkaMainPage.readAlertMessageAfterUnsuccessfulLogIn();
+
+        Assert.assertEquals(actualResult,expectedResult);
+
+    }
+
 }

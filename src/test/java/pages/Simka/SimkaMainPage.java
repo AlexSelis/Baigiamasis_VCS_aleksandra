@@ -28,4 +28,8 @@ public class SimkaMainPage {
     public static String readElementNameAfterLogin() {
         return Common.getElementText(Locator.Simka.MainPage.elementTextAfterSuccessfulLogin);
     }
+
+    public static String readAlertMessageAfterUnsuccessfulLogIn() {
+        return Common.getElementText(Locator.Simka.MainPage.elementTextAfterUnsuccessfulLogin);
+    }
 }

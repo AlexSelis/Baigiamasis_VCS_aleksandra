@@ -11,6 +11,7 @@ public class Locator {
             public static By passwordInput = By.xpath("//input[@id='input-password']");
             public static By submitLogInButton = By.xpath("//button[@type='submit' and @data-loading-text='<span>Prisijungti</span>']");
             public static By elementTextAfterSuccessfulLogin = By.xpath("//h1[text()='Mano paskyra']");
+            public static By elementTextAfterUnsuccessfulLogin = By.xpath("//div[@class='alert alert-danger alert-dismissible']");
         }
     }
 }
