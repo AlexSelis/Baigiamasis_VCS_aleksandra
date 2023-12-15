@@ -28,7 +28,7 @@ public class SimkaMainPageTest extends TestBase {
         };
     }
 
-    @Test(dataProvider = "logInValidData")
+    @Test(dataProvider = "logInValidData", priority = 1)
     public void testLoginUsingValidData(String userEmail, String userPassword) {
         String expectedResult = "Mano paskyra";
         String actualResult;
@@ -42,7 +42,7 @@ public class SimkaMainPageTest extends TestBase {
         Assert.assertEquals(actualResult, expectedResult);
     }
 
-    @Test(dataProvider = "logInInvalidData")
+    @Test(dataProvider = "logInInvalidData", priority = 2)
     public void testLogInUsingInvalidData(String userEmail, String userPassword) {
 
         String expectedResult = "Įspėjimas: El. paštas ir/arba slaptažodis nerasti sistemoje.";
@@ -66,7 +66,7 @@ public class SimkaMainPageTest extends TestBase {
         };
     }
 
-    @Test(dataProvider = "searchWithValidData")
+    @Test(dataProvider = "searchWithValidData", priority = 3)
     public void testSearchWithValidData(String searchKeyWord) {
         String expectedResult = "Filtras";
         String actualResult;
@@ -90,7 +90,7 @@ public class SimkaMainPageTest extends TestBase {
         };
     }
 
-    @Test(dataProvider = "searchWithInvalidData")
+    @Test(dataProvider = "searchWithInvalidData", priority = 4)
     public void testSearchWithInvalidData(String searchKeyWord) {
         String expectedResult = "Nėra prekės, kuri atitiktų paieškos kriterijus.";
         String actualResult;
@@ -105,7 +105,7 @@ public class SimkaMainPageTest extends TestBase {
                 "\nActual: %s, \nExpected: %s".formatted(actualResult, expectedResult)
         );
     }
-    @Test
+    @Test(priority = 5)
     public void testAddProductToCart(){
         String expectedResult = "Pavyko: Jūs patalpinote ";
         String actualResult;
