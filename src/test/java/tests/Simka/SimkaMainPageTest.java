@@ -37,7 +37,6 @@ public class SimkaMainPageTest extends TestBase {
         SimkaMainPage.inputUserEmail(userEmail);
         SimkaMainPage.inputUserPassword(userPassword);
         SimkaMainPage.clickOnConfirmationButton();
-
         actualResult = SimkaMainPage.readElementNameAfterLogin();
 
         Assert.assertEquals(actualResult, expectedResult);
@@ -53,11 +52,9 @@ public class SimkaMainPageTest extends TestBase {
         SimkaMainPage.inputUserEmail(userEmail);
         SimkaMainPage.inputUserPassword(userPassword);
         SimkaMainPage.clickOnConfirmationButton();
-
         actualResult = SimkaMainPage.readAlertMessageAfterUnsuccessfulLogIn();
 
         Assert.assertEquals(actualResult, expectedResult);
-
     }
 
     @DataProvider(name = "searchWithValidData")
@@ -76,9 +73,7 @@ public class SimkaMainPageTest extends TestBase {
 
         SimkaMainPage.inputSeachKeyWords(searchKeyWord);
         SimkaMainPage.clickOnSearchButton();
-
         actualResult = SimkaMainPage.readProductSearchFilterMessage();
-
 
         Assert.assertTrue(
                 actualResult.contains(expectedResult),
@@ -109,5 +104,19 @@ public class SimkaMainPageTest extends TestBase {
                 actualResult.contains(expectedResult),
                 "\nActual: %s, \nExpected: %s".formatted(actualResult, expectedResult)
         );
+    }
+    @Test
+    public void testAddProductToCart(){
+        String expectedResult = "Pavyko: Jūs patalpinote ";
+        String actualResult;
+
+        SimkaMainPage.clickOnProductCategory();
+        SimkaMainPage.clickOnProductSubcategory();
+        SimkaMainPage.clickOnFirstSuggestedProduct();
+        SimkaMainPage.clickOnFirstSuggestedSize();
+        SimkaMainPage.clickOnButtonAddToCart();
+        actualResult = SimkaMainPage.readProductAddedToCartModal();
+
+        Assert.assertTrue(actualResult.contains(expectedResult));
     }
 }

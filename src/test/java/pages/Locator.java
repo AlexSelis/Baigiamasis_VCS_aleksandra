@@ -16,6 +16,12 @@ public class Locator {
             public static By searchButton = By.xpath("//button[@class='search-button']");
             public static By productSearchFilterMessage = By.xpath("//span[contains(text(),'Filtras')]");
             public static By nothingFoundInSearchMessage = By.xpath("//p[contains(text(),'Nėra prekės, kuri atitiktų paieškos kriterijus.')]");
+            public static By categoryButton = By.xpath("//a[@href='https://simka.lt/drabuziai-moterims' and @class='dropdown-toggle']");
+            public static By firstSuggestedProduct = By.xpath("//div[@class='product-layout  '][1]");
+            public static By firstSuggestedSize = By.xpath("//span[@class='option-value'][1]");
+            public static By buttonAddToCart = By.xpath("//a[@id='button-cart']");
+            public static By successfulAddToCartModalMessage = By.xpath("//div[@class='notification-text']");
+            public static By subcategoryButton = By.xpath("//span[contains(text(),'Suknelės') and @class='links-text']");
         }
     }
 }

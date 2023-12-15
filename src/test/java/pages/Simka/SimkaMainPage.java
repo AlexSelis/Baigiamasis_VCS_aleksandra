@@ -48,4 +48,31 @@ public class SimkaMainPage {
     public static String readSearchResultWarningMessage() {
         return Common.getElementText(Locator.Simka.MainPage.nothingFoundInSearchMessage);
     }
+
+    public static void clickOnProductCategory() {
+        //Common.waitForElementWithVisibilityChange(Locator.Simka.MainPage.categoryButton);
+        Common.clickElement(Locator.Simka.MainPage.categoryButton);
+    }
+
+    public static void clickOnFirstSuggestedProduct() {
+        Common.waitForElementWithVisibilityChange(Locator.Simka.MainPage.firstSuggestedProduct);
+        Common.clickElement(Locator.Simka.MainPage.firstSuggestedProduct);
+    }
+
+    public static void clickOnFirstSuggestedSize() {
+        Common.clickElement(Locator.Simka.MainPage.firstSuggestedSize);
+    }
+
+    public static void clickOnButtonAddToCart() {
+        Common.clickElement(Locator.Simka.MainPage.buttonAddToCart);
+    }
+
+    public static String readProductAddedToCartModal() {
+        Common.waitForElementWithVisibilityChange(Locator.Simka.MainPage.successfulAddToCartModalMessage);
+        return Common.getElementText(Locator.Simka.MainPage.successfulAddToCartModalMessage);
+    }
+
+    public static void clickOnProductSubcategory() {
+        Common.clickElement(Locator.Simka.MainPage.subcategoryButton);
+    }
 }
