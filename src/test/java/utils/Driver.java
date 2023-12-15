@@ -11,6 +11,7 @@ public class Driver {
     public static void setUpChromeDriver() {
         WebDriverManager.chromedriver().setup();
         ChromeOptions option = new ChromeOptions();
+        option.addArguments("--headless=new");
         option.addArguments("--start-maximized");
         option.addArguments("--force-device-scale-factor=1");
         driver = new ChromeDriver(option);
