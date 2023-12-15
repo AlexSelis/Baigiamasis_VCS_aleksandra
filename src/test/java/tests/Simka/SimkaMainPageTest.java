@@ -19,6 +19,7 @@ public class SimkaMainPageTest extends TestBase {
                 {"test.benuTest@gmail.com", "Test1Test"}
         };
     }
+
     @DataProvider(name = "logInInvalidData")
     public Object[][] provideDataForInvalidLogin() {
         return new Object[][]{
@@ -41,8 +42,9 @@ public class SimkaMainPageTest extends TestBase {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
     @Test(dataProvider = "logInInvalidData")
-    public void testLogInUsingInvalidData(String userEmail, String userPassword){
+    public void testLogInUsingInvalidData(String userEmail, String userPassword) {
 
         String expectedResult = "Įspėjimas: El. paštas ir/arba slaptažodis nerasti sistemoje.";
         String actualResult;
@@ -54,8 +56,33 @@ public class SimkaMainPageTest extends TestBase {
 
         actualResult = SimkaMainPage.readAlertMessageAfterUnsuccessfulLogIn();
 
-        Assert.assertEquals(actualResult,expectedResult);
+        Assert.assertEquals(actualResult, expectedResult);
 
     }
 
+    @DataProvider(name = "searchWithValidData")
+    public Object[][] searchUsingValidKeywordsDataProvider() {
+        return new Object[][]{
+                {"Batai"},
+                {"Sijonas"},
+                {"Suknele"}
+        };
+    }
+
+    @Test(dataProvider = "searchWithValidData")
+    public void testSearchWithValidData(String searchKeyWord) {
+        String expectedResult = "Filtras";
+        String actualResult;
+
+        SimkaMainPage.inputSeachKeyWords(searchKeyWord);
+        SimkaMainPage.clickOnSearchButton();
+
+        actualResult = SimkaMainPage.readProductSearchFilterMessage();
+
+
+        Assert.assertTrue(
+                actualResult.contains(expectedResult),
+                "\nActual: %s, \nExpected: %s".formatted(actualResult, expectedResult)
+        );
+    }
 }

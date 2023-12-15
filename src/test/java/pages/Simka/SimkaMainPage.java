@@ -32,4 +32,16 @@ public class SimkaMainPage {
     public static String readAlertMessageAfterUnsuccessfulLogIn() {
         return Common.getElementText(Locator.Simka.MainPage.elementTextAfterUnsuccessfulLogin);
     }
+
+    public static void inputSeachKeyWords(String searchKeyWord) {
+        Common.sendKeysToElement(searchKeyWord, Locator.Simka.MainPage.searchBoxInput);
+    }
+
+    public static void clickOnSearchButton() {
+        Common.clickElement(Locator.Simka.MainPage.searchButton);
+    }
+
+    public static String readProductSearchFilterMessage() {
+        return Common.getElementText(Locator.Simka.MainPage.productSearchFilterMessage);
+    }
 }
