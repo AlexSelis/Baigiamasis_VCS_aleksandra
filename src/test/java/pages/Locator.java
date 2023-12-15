@@ -15,6 +15,7 @@ public class Locator {
             public static By searchBoxInput = By.xpath("//input[@name='search' and @placeholder='Paieška']");
             public static By searchButton = By.xpath("//button[@class='search-button']");
             public static By productSearchFilterMessage = By.xpath("//span[contains(text(),'Filtras')]");
+            public static By nothingFoundInSearchMessage = By.xpath("//p[contains(text(),'Nėra prekės, kuri atitiktų paieškos kriterijus.')]");
         }
     }
 }

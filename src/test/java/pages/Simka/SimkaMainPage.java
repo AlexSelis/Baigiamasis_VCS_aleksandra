@@ -44,4 +44,8 @@ public class SimkaMainPage {
     public static String readProductSearchFilterMessage() {
         return Common.getElementText(Locator.Simka.MainPage.productSearchFilterMessage);
     }
+
+    public static String readSearchResultWarningMessage() {
+        return Common.getElementText(Locator.Simka.MainPage.nothingFoundInSearchMessage);
+    }
 }

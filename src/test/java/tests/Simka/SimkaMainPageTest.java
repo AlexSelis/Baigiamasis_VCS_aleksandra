@@ -85,4 +85,29 @@ public class SimkaMainPageTest extends TestBase {
                 "\nActual: %s, \nExpected: %s".formatted(actualResult, expectedResult)
         );
     }
+
+    @DataProvider(name = "searchWithInvalidData")
+    public Object[][] searchUsingInvalidKeywordsDataProvider() {
+        return new Object[][]{
+                {"test"},
+                {"pagalve"},
+                {"humus"}
+        };
+    }
+
+    @Test(dataProvider = "searchWithInvalidData")
+    public void testSearchWithInvalidData(String searchKeyWord) {
+        String expectedResult = "Nėra prekės, kuri atitiktų paieškos kriterijus.";
+        String actualResult;
+
+        SimkaMainPage.inputSeachKeyWords(searchKeyWord);
+        SimkaMainPage.clickOnSearchButton();
+
+        actualResult = SimkaMainPage.readSearchResultWarningMessage();
+
+        Assert.assertTrue(
+                actualResult.contains(expectedResult),
+                "\nActual: %s, \nExpected: %s".formatted(actualResult, expectedResult)
+        );
+    }
 }
